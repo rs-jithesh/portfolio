@@ -3,125 +3,1048 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jithesh Rajan · Full-stack Engineer</title>
-<meta name="description" content="Jithesh Rajan is a full-stack engineer in Bangalore building hybrid and web applications.">
+<title>Jithesh Rajan · Portfolio</title>
+<meta name="description" content="Jithesh Rajan is a full-stack engineer building hybrid and web applications.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0d1015">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
 <style>
   :root {
-    --bg: #12151b;
-    --text: #e8eaed;
-    --muted: #9aa0a6;
-    --line: #2a2f38;
-    --accent: #8ab4f8;
+    --bg: #0d1015;
+    --bg-soft: #131820;
+    --surface: #151b24;
+    --text: #e8ecf1;
+    --muted: #8a93a0;
+    --line: #242c38;
+    --accent: #a5b4fc;
+    --accent-2: #c4b5fd;
+    --highlight: #8fd3e8;
     --font: "DM Sans", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
   }
   * { box-sizing: border-box; }
-  html { background: var(--bg); }
+  html { background: var(--bg); scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: var(--bg);
+    min-height: 100vh;
+    background:
+      radial-gradient(900px 520px at 50% -10%, rgba(129,140,248,.07), transparent 70%),
+      var(--bg);
     color: var(--text);
     font-family: var(--font);
     font-size: 1.0625rem;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+    cursor: default;
   }
+  .progress {
+    position: fixed;
+    inset: 0 0 auto;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    z-index: 50;
+  }
+  .spotlight {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .5s ease;
+    background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 0%), rgba(129,140,248,.08), transparent 65%);
+  }
+  .spotlight.on { opacity: 1; }
   main {
-    max-width: 38rem;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 84rem;
     margin: 0 auto;
-    padding: clamp(4rem, 14vh, 9rem) 1.5rem 5rem;
+    padding: 0 clamp(1.25rem, 4vw, 3.5rem) 5rem;
   }
+  header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-block: clamp(3rem, 7vh, 5rem) clamp(2.5rem, 6vh, 4rem);
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    margin: 0;
+    font-size: .8rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2.4s ease-out infinite;
+  }
+  .hero {
+    flex: 1;
+    display: grid;
+    align-content: center;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .intro-secondary { max-width: 34rem; color: var(--muted); }
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+  }
+  .hero-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .65rem 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-size: .92rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .3s, background .3s, color .3s;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    border-color: rgba(129,140,248,.45);
+    background: rgba(129,140,248,.06);
+  }
+  .btn-primary {
+    border-color: transparent;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    color: #0d1015;
+    font-weight: 500;
+  }
+  .btn-primary:hover {
+    color: #0d1015;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    box-shadow: 0 12px 30px -14px rgba(129,140,248,.8);
+  }
+  .scroll-cue {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    font-size: .7rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .3s;
+  }
+  .scroll-cue::before {
+    content: "";
+    width: 26px;
+    height: 1px;
+    background: currentColor;
+    transform-origin: 0 50%;
+    animation: cue 2.2s ease-in-out infinite;
+  }
+  .scroll-cue:hover { color: var(--accent); }
   h1 {
     margin: 0;
-    font-size: clamp(2.75rem, 10vw, 4.5rem);
+    font-size: clamp(2.75rem, 7.5vw, 6.5rem);
     font-weight: 300;
-    line-height: 1.05;
+    line-height: 1.03;
     letter-spacing: -0.03em;
   }
   .role {
-    margin: 1.25rem 0 0;
-    font-size: 1.25rem;
+    margin: 0 0 .8rem;
+    font-family: var(--mono);
+    font-size: clamp(.78rem, 1.1vw, 1rem);
+    font-weight: 400;
+    letter-spacing: .2em;
+    text-transform: uppercase;
     color: var(--accent);
   }
-  .intro {
-    margin: 1.75rem 0 0;
-    max-width: 30rem;
+  .intro { max-width: 34rem; color: var(--muted); }
+  .hl { color: var(--highlight); }
+  .skills {
+    display: grid;
+    gap: .45rem;
+    max-width: 34rem;
+  }
+  .skill-group {
+    display: grid;
+    grid-template-columns: 3.75rem 1fr;
+    gap: .6rem;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: .74rem;
+    letter-spacing: .03em;
+  }
+  .skill-label {
+    font-size: .64rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
     color: var(--muted);
   }
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem .9rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--text);
+  }
+  .skill-list li {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+  }
+  .skill-ico {
+    width: 15px;
+    height: 15px;
+    flex: none;
+  }
   section {
-    margin-top: 4.5rem;
+    margin-top: clamp(3.5rem, 8vw, 6rem);
     padding-top: 1.75rem;
     border-top: 1px solid var(--line);
   }
   h2 {
-    margin: 0 0 1.25rem;
-    font-size: 1rem;
+    margin: 0 0 1.75rem;
+    font-size: .82rem;
     font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
     color: var(--muted);
   }
-  .zenda-head {
+  h3 { margin: 0; font-size: 1.05rem; font-weight: 500; }
+  p { margin: 0; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17.5rem), 1fr));
+    gap: clamp(.85rem, 1.5vw, 1.25rem);
+  }
+  .card {
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: .9rem;
+    padding: .9rem;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: linear-gradient(180deg, var(--surface), var(--bg-soft));
+    transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .4s, box-shadow .4s;
   }
-  .zenda-head strong { font-weight: 500; font-size: 1.25rem; }
-  .zenda-head span { color: var(--muted); }
-  section p { margin: 0.75rem 0 0; }
-  .stack { color: var(--muted); margin-top: 1.25rem; }
-  ul { margin: 0; padding: 0; list-style: none; }
-  li { padding: 0.35rem 0; }
-  a {
-    color: var(--text);
-    text-underline-offset: 0.3em;
-    text-decoration-color: var(--line);
-    transition: text-decoration-color .2s, color .2s;
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(129,140,248,.4);
+    box-shadow: 0 20px 44px -24px rgba(0,0,0,.85);
   }
-  a:hover { color: var(--accent); text-decoration-color: var(--accent); }
-  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
-  footer { margin-top: 4.5rem; color: var(--muted); }
+  .thumb {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 11px;
+    background:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,.05) 1px, transparent 0) 0 0 / 16px 16px,
+      linear-gradient(135deg, #1b2431, #11161d);
+  }
+  .thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.06) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform .7s ease;
+    pointer-events: none;
+  }
+  .card:hover .thumb::after { transform: translateX(120%); }
+  .phone {
+    position: relative;
+    z-index: 1;
+    width: 54%;
+    aspect-ratio: 9 / 19;
+    padding: 5px;
+    border: 1px solid #2b3442;
+    border-radius: 20px;
+    background: #05070a;
+    box-shadow: 0 22px 40px -20px rgba(0,0,0,.9), inset 0 0 0 1px rgba(255,255,255,.03);
+    transition: transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .phone::before {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    width: 32%;
+    height: 4px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: #04060a;
+    z-index: 2;
+  }
+  .card:hover .phone { transform: translateY(-5px) rotate(-1.5deg); }
+  .phone .screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+    border-radius: 15px;
+    overflow: hidden;
+    background: linear-gradient(160deg, #1f2a38, #121822);
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: .62rem;
+    line-height: 1.4;
+    letter-spacing: .03em;
+    text-align: center;
+  }
+  .phone .screen img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  /* One page-load moment: the header settles in. */
-  header > * { animation: settle .9s cubic-bezier(.2,.7,.2,1) both; }
-  header .role { animation-delay: .12s; }
-  header .intro { animation-delay: .24s; }
-  @keyframes settle { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-  @media (prefers-reduced-motion: reduce) { header > * { animation: none; } }
+  .thumb.web { aspect-ratio: 16 / 10; }
+  .browser {
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    border: 1px solid #2b3442;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #05070a;
+    box-shadow: 0 22px 40px -20px rgba(0,0,0,.9), inset 0 0 0 1px rgba(255,255,255,.03);
+    transition: transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .card:hover .browser { transform: translateY(-5px); }
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: .28rem;
+    padding: .42rem .55rem;
+    border-bottom: 1px solid #222b38;
+    background: #0b0f16;
+  }
+  .browser-bar i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #2f3a49;
+  }
+  .browser-bar .url {
+    flex: 1;
+    margin-left: .5rem;
+    height: 9px;
+    border-radius: 999px;
+    background: #161d27;
+  }
+  .browser .screen {
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #1f2a38, #121822);
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: .62rem;
+    line-height: 1.4;
+    letter-spacing: .03em;
+    text-align: center;
+  }
+  .browser .screen img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .thumb.pending {
+    background:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,.05) 1px, transparent 0) 0 0 / 16px 16px,
+      linear-gradient(135deg, #171f2b, #0e1219);
+  }
+  .pending-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .7rem;
+    padding: 1rem;
+    text-align: center;
+  }
+  .pending-inner img {
+    height: clamp(20px, 2.6vw, 30px);
+    width: auto;
+    opacity: .8;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,.5));
+  }
+  .pending-inner span {
+    font-family: var(--mono);
+    font-size: .64rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .brand { margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+  .brand:last-child { margin-bottom: 0; }
+  .brand-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .55rem;
+    margin-bottom: 1.35rem;
+  }
+  .brand-head .at {
+    font-family: var(--mono);
+    font-weight: 400;
+    font-size: clamp(24px, 3vw, 38px);
+    line-height: 1;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 14px rgba(129,140,248,.4));
+  }
+  .brand-logo {
+    display: block;
+    height: clamp(30px, 3.6vw, 48px);
+    width: auto;
+    filter: drop-shadow(0 4px 14px rgba(0,0,0,.45));
+  }
+  .brand-pill {
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: .22rem .62rem;
+    white-space: nowrap;
+  }
+  .brand-pill.live {
+    color: var(--accent);
+    border-color: rgba(129,140,248,.4);
+    background: rgba(129,140,248,.08);
+  }
+  .brand-pill.primary {
+    font-size: .78rem;
+    font-weight: 500;
+    color: #0d1015;
+    border-color: transparent;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    box-shadow: 0 10px 24px -12px rgba(129,140,248,.85);
+  }
+  .tenure {
+    display: grid;
+    gap: .7rem;
+    max-width: 30rem;
+    margin-bottom: 1.9rem;
+  }
+  .tenure-track {
+    position: relative;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--line);
+  }
+  .tenure-track::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: var(--line);
+  }
+  .tenure-track::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(129,140,248,.15);
+  }
+  .tenure-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transition: width 1.6s cubic-bezier(.2,.7,.2,1);
+  }
+  .tenure.reveal.in .tenure-fill { width: 100%; }
+  .tenure-tick {
+    position: absolute;
+    top: 50%;
+    width: 1px;
+    height: 9px;
+    transform: translate(-50%, -50%);
+    background: var(--line);
+  }
+  .tenure-years {
+    position: relative;
+    height: 1rem;
+    font-family: var(--mono);
+    font-size: .7rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .tenure-year {
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+  }
+  .card-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: .75rem;
+  }
+  .card-top .year { font-size: .8rem; color: var(--muted); white-space: nowrap; }
+  .card p { margin-top: .45rem; font-size: .95rem; color: var(--muted); }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin: .85rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .tags li {
+    font-size: .74rem;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: .18rem .6rem;
+    transition: color .3s, border-color .3s;
+  }
+  .card:hover .tags li { color: var(--text); border-color: #333d4c; }
+
+  .stores {
+    display: flex;
+    gap: .5rem;
+    margin-top: .85rem;
+  }
+  .store {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--muted);
+    transition: transform .3s cubic-bezier(.2,.7,.2,1), color .3s, border-color .3s, background .3s;
+  }
+  .store:hover {
+    transform: translateY(-2px);
+    color: var(--text);
+    border-color: rgba(129,140,248,.45);
+    background: rgba(129,140,248,.06);
+  }
+  .store:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .store svg { width: 17px; height: 17px; fill: currentColor; }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .pills li {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: .5rem 1rem;
+    font-size: .92rem;
+    color: var(--muted);
+    transition: transform .3s cubic-bezier(.2,.7,.2,1), color .3s, border-color .3s, background .3s;
+  }
+  .pills li:hover {
+    transform: translateY(-2px);
+    color: var(--text);
+    border-color: rgba(129,140,248,.4);
+    background: rgba(129,140,248,.06);
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: clamp(3.5rem, 8vw, 6rem);
+    color: var(--muted);
+  }
+  .email {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: var(--text);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: .3em;
+    text-decoration-color: var(--line);
+    transition: color .25s, text-decoration-color .25s;
+  }
+  .email::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform .3s cubic-bezier(.2,.7,.2,1);
+  }
+  .email:hover { color: var(--accent); text-decoration-color: transparent; }
+  .email:hover::after { transform: scaleX(1); }
+  .email:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+  .email svg { transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+  .email:hover svg { transform: translateX(3px); }
+
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 1.75rem;
+    transform: translate(-50%, 12px);
+    padding: .55rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: .85rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s, transform .3s;
+    z-index: 60;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  a { color: var(--text); }
+  a, button { cursor: pointer; }
+
+  .js .reveal { opacity: 0; transform: translateY(16px); }
+  .js .reveal.in {
+    opacity: 1;
+    transform: none;
+    transition: opacity .7s cubic-bezier(.2,.7,.2,1) var(--d, 0ms), transform .7s cubic-bezier(.2,.7,.2,1) var(--d, 0ms);
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(129,140,248,.5); }
+    70%  { box-shadow: 0 0 0 8px rgba(129,140,248,0); }
+    100% { box-shadow: 0 0 0 0 rgba(129,140,248,0); }
+  }
+  @keyframes cue {
+    0%, 100% { transform: scaleX(.35); opacity: .45; }
+    50%      { transform: scaleX(1); opacity: 1; }
+  }
+
+  @media (min-width: 900px) {
+    .hero {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      align-items: center;
+      column-gap: clamp(2.5rem, 6vw, 5rem);
+    }
+  }
+
+  @media (max-width: 640px) {
+    body { font-size: 1rem; }
+    main { padding-inline: 1.5rem; padding-bottom: 3.5rem; }
+    header { min-height: 88vh; min-height: 88svh; padding-block: 3.5rem 2.5rem; }
+    .hero-foot { flex-direction: column-reverse; align-items: flex-start; gap: 1.5rem; }
+    .scroll-cue { display: none; }
+    .card { padding: .8rem; border-radius: 14px; }
+    footer { flex-direction: column; align-items: flex-start; gap: .75rem; }
+    .email { font-size: .95rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .reveal { opacity: 1; transform: none; }
+    .spotlight, .thumb::after { display: none; }
+    .dot, .scroll-cue::before { animation: none; }
+    * { transition-duration: .01ms !important; }
+  }
+
+  #oneko { transform: scale(1.5); }
+
+  .cat-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 55;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .42rem .72rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(19,24,32,.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: .66rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color .25s, border-color .25s, background .25s;
+  }
+  .cat-toggle svg { width: 13px; height: 13px; fill: currentColor; }
+  .cat-toggle:hover { color: var(--text); border-color: rgba(129,140,248,.45); background: rgba(19,24,32,.95); }
+  .cat-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .cat-toggle[aria-pressed="false"] { opacity: .7; }
+
+  @media (pointer: coarse) {
+    #oneko, .cat-toggle { display: none !important; }
+  }
 </style>
 </head>
 <body>
+<div class="progress" aria-hidden="true"></div>
+<div class="spotlight" aria-hidden="true"></div>
+
+<button class="cat-toggle" type="button" aria-pressed="true" aria-label="Shoo the cat">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="16" r="4.6"/><circle cx="5.6" cy="11.2" r="2.2"/><circle cx="9.8" cy="7.6" r="2.2"/><circle cx="14.2" cy="7.6" r="2.2"/><circle cx="18.4" cy="11.2" r="2.2"/></svg>
+  <span>Shoo the cat</span>
+</button>
+
 <main>
   <header>
-    <h1>Jithesh Rajan</h1>
-    <p class="role">Full-stack engineer</p>
-    <p class="intro">I build hybrid and web applications from the interface down to the database. Based in Bangalore.</p>
+    <p class="status reveal"><span class="dot" aria-hidden="true"></span>Available for work</p>
+    <div class="hero">
+      <div class="hero-lead" data-stagger>
+        <p class="role reveal">Full-stack engineer</p>
+        <h1 class="reveal">Jithesh Rajan</h1>
+      </div>
+      <div class="hero-copy" data-stagger>
+        <p class="intro reveal">Currently at Zenda, building a <span class="hl">modular e-commerce stack</span> to replace our Shopify dependency — owning it from idea to release.</p>
+        <p class="intro-secondary reveal"><span class="hl">AI-enabled</span>, context-driven development — comfortable running large, parallel AI workflows.</p>
+        <div class="skills reveal">
+          <div class="skill-group">
+            <span class="skill-label">Stack</span>
+            <ul class="skill-list">
+              <li><img class="skill-ico" src="assets/icons/angular.svg" alt="">Angular</li>
+              <li><img class="skill-ico" src="assets/icons/ionic.svg" alt="">Ionic</li>
+              <li><img class="skill-ico" src="assets/icons/capacitor.svg" alt="">Capacitor</li>
+              <li><img class="skill-ico" src="assets/icons/java.svg" alt="">Java</li>
+              <li><img class="skill-ico" src="assets/icons/springboot.svg" alt="">Spring Boot</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <span class="skill-label">AI</span>
+            <ul class="skill-list">
+              <li><img class="skill-ico" src="assets/icons/claude.svg" alt="">Claude Code</li>
+              <li><img class="skill-ico" src="assets/icons/opencode.svg" alt="">OpenCode</li>
+              <li><img class="skill-ico" src="assets/icons/codex.svg" alt="">Codex</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-foot reveal">
+      <a class="scroll-cue" href="#professional" aria-label="Scroll to work">Scroll</a>
+      <div class="cta">
+        <a class="btn btn-primary" href="#professional">View work</a>
+        <a class="btn" href="https://docs.google.com/document/d/1Na17KxKXCQb5E_NawdZcRyKiX1A_uXuF/preview?usp=sharing&amp;ouid=100861318367573550528&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener" aria-label="View resume, Google Docs, opens in a new tab">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+          Resume
+        </a>
+        <a class="btn" href="mailto:jithesh.sraj@gmail.com">Get in touch</a>
+      </div>
+    </div>
   </header>
 
-  <section aria-labelledby="work">
-    <h2 id="work">Now</h2>
-    <div class="zenda-head">
-      <strong>Zenda Technology Solutions</strong>
-      <span>2023 to present</span>
+  <section aria-labelledby="professional">
+    <h2 id="professional" class="reveal">Professional Work &amp; Experience</h2>
+
+    <div class="brand reveal">
+      <div class="brand-head">
+        <span class="at" aria-hidden="true">@</span>
+        <img class="brand-logo" src="assets/zenda-logo.png" alt="Zenda">
+        <span class="brand-pill primary" data-years>3 years</span>
+        <span class="brand-pill live">Present</span>
+      </div>
+      <div class="tenure reveal">
+        <div class="tenure-track" aria-hidden="true">
+          <span class="tenure-fill"></span>
+        </div>
+        <div class="tenure-years" aria-hidden="true"></div>
+      </div>
+      <div class="grid" data-stagger>
+        <article class="card reveal">
+          <div class="thumb" aria-hidden="true"><div class="phone"><div class="screen">App screenshot</div></div></div>
+          <div class="card-body">
+          <div class="card-top">
+            <h3>zenda app</h3>
+            <span class="year">2023–present</span>
+          </div>
+          <p>A school-fee payments app that lets parents pay on Android, iOS and the web.</p>
+          <div class="stores">
+            <a class="store" href="https://play.google.com/store/apps/details?id=io.nexquare.parent&amp;hl=en_IN" target="_blank" rel="noopener" aria-label="Get zenda app on Google Play">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24c-1.39-.61-2.96-.95-4.62-.95s-3.23.34-4.62.95L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83l1.84 3.18C3.72 10.87 2 13.06 2 15.5h20c0-2.44-1.72-4.63-4.4-6.02zM7 13.5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm10 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
+            </a>
+            <a class="store" href="https://apps.apple.com/in/app/zenda-school-fees-made-easy/id1513148556" target="_blank" rel="noopener" aria-label="Download zenda app on the App Store">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+            </a>
+          </div>
+          <ul class="tags">
+              <li>Angular</li>
+              <li>Ionic</li>
+              <li>Capacitor</li>
+              <li>Java</li>
+              <li>Spring MVC</li>
+              <li>MySQL</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="thumb pending" aria-hidden="true">
+            <div class="pending-inner">
+              <img src="assets/zenda-logo.png" alt="">
+              <span>Screenshots coming soon</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>zenda marketplace (v2)</h3>
+            </div>
+            <p>Led from scratch with Claude Code, building the full stack: a mobile app library, an admin panel library and the backend APIs.</p>
+            <ul class="tags">
+              <li>Angular</li>
+              <li>Ionic</li>
+              <li>Capacitor</li>
+              <li>Java</li>
+              <li>Spring Boot</li>
+              <li>PostgreSQL</li>
+            </ul>
+          </div>
+        </article>
+      </div>
     </div>
-    <p>Building the Zenda app, which lets parents pay school fees on Android, iOS and the web, and Nexquare.io, an adaptive web app for educational institutions.</p>
-    <p class="stack">Angular, Ionic, Capacitor, Cordova, Spring Boot, PostgreSQL</p>
+  </section>
+
+  <section aria-labelledby="personal">
+    <h2 id="personal" class="reveal">Personal projects</h2>
+    <div class="grid" data-stagger>
+      <article class="card reveal">
+        <div class="thumb web" aria-hidden="true">
+          <div class="browser">
+            <div class="browser-bar"><i></i><i></i><i></i><span class="url"></span></div>
+            <div class="screen">Project screenshot</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <h3>Project name</h3>
+            <span class="year">Year</span>
+          </div>
+          <p>A one-line description of the project and the problem it solves.</p>
+          <ul class="tags">
+            <li>Tech</li>
+            <li>Tech</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="thumb web" aria-hidden="true">
+          <div class="browser">
+            <div class="browser-bar"><i></i><i></i><i></i><span class="url"></span></div>
+            <div class="screen">Project screenshot</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <h3>Project name</h3>
+            <span class="year">Year</span>
+          </div>
+          <p>A one-line description of the project and the problem it solves.</p>
+          <ul class="tags">
+            <li>Tech</li>
+            <li>Tech</li>
+          </ul>
+        </div>
+      </article>
+    </div>
   </section>
 
   <section aria-labelledby="next">
-    <h2 id="next">Next</h2>
-    <ul>
-      <li>Full-stack roles</li>
-      <li>Building products end to end</li>
-      <li>Engineering with AI, with a clear view of what I ship</li>
+    <h2 id="next" class="reveal">Next</h2>
+    <ul class="pills" data-stagger>
+      <li class="reveal">Full-stack roles</li>
+      <li class="reveal">Building products end to end</li>
+      <li class="reveal">Engineering with AI, with a clear view of what I ship</li>
     </ul>
   </section>
 
   <footer>
-    <a href="mailto:jithesh.sraj@gmail.com">jithesh.sraj@gmail.com</a>
+    <button class="email reveal" type="button" data-copy="jithesh.sraj@gmail.com">
+      jithesh.sraj@gmail.com
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6"/>
+      </svg>
+    </button>
   </footer>
 </main>
+
+<div class="toast" role="status" aria-live="polite">Email copied</div>
+
+<script src="assets/oneko.js" data-cat="assets/oneko.gif"></script>
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll('[data-stagger]').forEach((group) => {
+    [...group.children].forEach((child, i) => child.style.setProperty('--d', i * 80 + 'ms'));
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    }
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  const tenureStart = new Date(2023, 8, 1);
+  const today = new Date();
+  let yearsAtZenda = today.getFullYear() - tenureStart.getFullYear();
+  const monthsSince = today.getMonth() - tenureStart.getMonth();
+  if (monthsSince < 0 || (monthsSince === 0 && today.getDate() < tenureStart.getDate())) yearsAtZenda--;
+  const yearsPill = document.querySelector('[data-years]');
+  if (yearsPill) yearsPill.textContent = yearsAtZenda + ' years';
+
+  const tenureTrack = document.querySelector('.tenure-track');
+  const tenureYears = document.querySelector('.tenure-years');
+  if (tenureTrack && tenureYears) {
+    const years = [];
+    for (let y = tenureStart.getFullYear(); y <= today.getFullYear(); y++) years.push(y);
+    years.forEach((year, i) => {
+      const last = i === years.length - 1;
+      const pct = years.length > 1 ? (i / (years.length - 1)) * 100 : 0;
+      const label = document.createElement('span');
+      label.className = 'tenure-year';
+      label.textContent = year;
+      if (i === 0) label.style.left = '0';
+      else if (last) label.style.right = '0';
+      else {
+        label.style.left = pct + '%';
+        label.style.transform = 'translateX(-50%)';
+      }
+      tenureYears.appendChild(label);
+      if (i > 0 && !last) {
+        const tick = document.createElement('span');
+        tick.className = 'tenure-tick';
+        tick.style.left = pct + '%';
+        tenureTrack.appendChild(tick);
+      }
+    });
+  }
+
+  const bar = document.querySelector('.progress');
+  const onScroll = () => {
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - doc.clientHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? doc.scrollTop / max : 0) + ')';
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const spot = document.querySelector('.spotlight');
+  if (matchMedia('(pointer: fine)').matches && !reduce) {
+    addEventListener('pointermove', (e) => {
+      spot.style.setProperty('--mx', e.clientX + 'px');
+      spot.style.setProperty('--my', e.clientY + 'px');
+      spot.classList.add('on');
+    }, { passive: true });
+  }
+
+  const toast = document.querySelector('.toast');
+  let toastTimer;
+  document.querySelectorAll('[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const value = btn.dataset.copy;
+      try {
+        await navigator.clipboard.writeText(value);
+      } catch {
+        const t = document.createElement('textarea');
+        t.value = value;
+        t.style.position = 'fixed';
+        t.style.opacity = '0';
+        document.body.appendChild(t);
+        t.select();
+        document.execCommand('copy');
+        t.remove();
+      }
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+    });
+  });
+
+  const catToggle = document.querySelector('.cat-toggle');
+  const neko = document.getElementById('oneko');
+  if (catToggle) {
+    if (!neko) {
+      catToggle.hidden = true;
+    } else {
+      const label = catToggle.querySelector('span');
+      const applyCat = (visible) => {
+        neko.style.display = visible ? '' : 'none';
+        catToggle.setAttribute('aria-pressed', String(visible));
+        catToggle.setAttribute('aria-label', visible ? 'Shoo the cat' : 'Release the cat');
+        label.textContent = visible ? 'Shoo the cat' : 'Release the cat';
+      };
+      let catVisible = true;
+      try { catVisible = localStorage.getItem('catHidden') !== '1'; } catch {}
+      applyCat(catVisible);
+      catToggle.addEventListener('click', () => {
+        catVisible = !catVisible;
+        try { localStorage.setItem('catHidden', catVisible ? '0' : '1'); } catch {}
+        applyCat(catVisible);
+      });
+    }
+  }
+</script>
 </body>
 </html>
