@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jithesh Rajan · Full-stack Engineer</title>
+<meta name="description" content="Jithesh Rajan is a full-stack engineer in Bangalore building hybrid and web applications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #12151b;
+    --text: #e8eaed;
+    --muted: #9aa0a6;
+    --line: #2a2f38;
+    --accent: #8ab4f8;
+    --font: "DM Sans", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 38rem;
+    margin: 0 auto;
+    padding: clamp(4rem, 14vh, 9rem) 1.5rem 5rem;
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(2.75rem, 10vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .role {
+    margin: 1.25rem 0 0;
+    font-size: 1.25rem;
+    color: var(--accent);
+  }
+  .intro {
+    margin: 1.75rem 0 0;
+    max-width: 30rem;
+    color: var(--muted);
+  }
+  section {
+    margin-top: 4.5rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--line);
+  }
+  h2 {
+    margin: 0 0 1.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .zenda-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .zenda-head strong { font-weight: 500; font-size: 1.25rem; }
+  .zenda-head span { color: var(--muted); }
+  section p { margin: 0.75rem 0 0; }
+  .stack { color: var(--muted); margin-top: 1.25rem; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  li { padding: 0.35rem 0; }
+  a {
+    color: var(--text);
+    text-underline-offset: 0.3em;
+    text-decoration-color: var(--line);
+    transition: text-decoration-color .2s, color .2s;
+  }
+  a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+  footer { margin-top: 4.5rem; color: var(--muted); }
+
+  /* One page-load moment: the header settles in. */
+  header > * { animation: settle .9s cubic-bezier(.2,.7,.2,1) both; }
+  header .role { animation-delay: .12s; }
+  header .intro { animation-delay: .24s; }
+  @keyframes settle { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { header > * { animation: none; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Jithesh Rajan</h1>
+    <p class="role">Full-stack engineer</p>
+    <p class="intro">I build hybrid and web applications from the interface down to the database. Based in Bangalore.</p>
+  </header>
+
+  <section aria-labelledby="work">
+    <h2 id="work">Now</h2>
+    <div class="zenda-head">
+      <strong>Zenda Technology Solutions</strong>
+      <span>2023 to present</span>
+    </div>
+    <p>Building the Zenda app, which lets parents pay school fees on Android, iOS and the web, and Nexquare.io, an adaptive web app for educational institutions.</p>
+    <p class="stack">Angular, Ionic, Capacitor, Cordova, Spring Boot, PostgreSQL</p>
+  </section>
+
+  <section aria-labelledby="next">
+    <h2 id="next">Next</h2>
+    <ul>
+      <li>Full-stack roles</li>
+      <li>Building products end to end</li>
+      <li>Engineering with AI, with a clear view of what I ship</li>
+    </ul>
+  </section>
+
+  <footer>
+    <a href="mailto:jithesh.sraj@gmail.com">jithesh.sraj@gmail.com</a>
+  </footer>
+</main>
+</body>
+</html>
